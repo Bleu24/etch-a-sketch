@@ -7,14 +7,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridBtn = document.querySelector(".controls--grid-button");
     const field = document.querySelector(".controls__field");
 
-    //Setting up canvas dimensions;
+    //setting canvas 
+    canvas.setAttribute("style", "width: 800px; height: 800px; border: 3px dashed blue; margin-top: auto; margin-bottom: auto; display: flex; flex-wrap: nowrap;");
+
+    //variables for canvas pixels;
     let rows = 0;
     let columns = 0;
     let inputValue = undefined;
+    let pixelW = 0;
+    let pixelL = 0;
+    let GRID_BOARD = 800;
 
     //Functions
-    let createCanvas = (area) => {
-        canvas.setAttribute("style", `width: ${area}`)
+    let createPixels = (grid_board, input, numOfPixels) => {
+        pixelDimension = grid_board / input;
+        for (let i = 0; i < numOfPixels; i++) {
+            let pixel = document.createElement("div");
+            pixel.setAttribute("style", `width: ${pixelDimension}px; height: ${pixelDimension}px; border: 1px solid black;`);
+            canvas.appendChild(pixel);
+        }
     }
 
     //Listeners
@@ -24,12 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isNaN(inputValue)) {
                 throw "NaN! Just Ignore, Debugging Purposes";
             } 
+
+            if (e.target.value > 100) {
+                inputValue = 100;
+                e.target.value = 100;
+                console.log(inputValue);
+            }
             console.log(typeof inputValue);
         } catch (error) {
             console.error(error);
         }
         
     });
+
 
     gridBtn.addEventListener('click', () => {
         try {
@@ -40,11 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (isNaN(convertedValue)) {
                 throw "NaN! Just Ignore, Debugging Purposes"
             }
+            inputGridSize = convertedValue;
             rows = convertedValue;
             columns = convertedValue;
             canvasArea = rows * columns;
             console.log(`Creating a canvas size by: ${canvasArea} squares`);
-            createCanvas(canvasArea);
+
+            createPixels(GRID_BOARD, inputGridSize, canvasArea);
+               
         } catch (error) {
             console.error(error);
         }
