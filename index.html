@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" >
+    <script defer src="index.js"></script>
+    <title>Etch A Sketch</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo logo--header">
+            <img src="./assets/etch-a-sketch.png" alt="Etch a Sketch logo" class="icon icon--header">
+            <div class="logo__title">Etch A Sketch</div>
+        </div>
+        <ul class="list list--header">
+            <li class="list__item"><a class="redirect redirect--facebook" target="_blank" href="https://www.facebook.com/dynabrie">Facebook</a></li>
+            <li class="list__item"><a class="redirect redirect--instagram" target="_blank" href="https://www.instagram.com/breezus24_/">Instagram</a></li>
+            <li class="list__item"><a class="redirect redirect--github" target="_blank" href="https://github.com/Bleu24">GitHub</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="controls">
+            <button class="controls__button controls--randomize">Randomize Color</button>
+            <button class="controls__button controls--choose-color">Choose Color</button>
+            <button class="controls__button controls--reset-canvas">Reset Canvas</button>
+            <div class="controls__grid-controls">
+                <button class="controls__button controls--grid-button">Change Grid</button>
+                <input class="controls__field" type="number" max="100" min="0" placeholder="Set Grid Size">
+            </div>
+        </div>
+        <div class="grid"></div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Bryan Reamillo. All rights reserved.</p>
+    </div></div>
+</body>
+</html>
