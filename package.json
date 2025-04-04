@@ -1,0 +1,25 @@
+{
+  "name": "etch-a-sketch",
+  "version": "1.0.0",
+  "description": "TOP Project",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bleu24/etch-a-sketch.git"
+  },
+  "author": "Bryan Reamillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bleu24/etch-a-sketch/issues"
+  },
+  "homepage": "https://github.com/Bleu24/etch-a-sketch#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
