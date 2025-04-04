@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.header {
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+.logo--header {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon--header {
+    width: 50px;
+    height: 50px;
+}
+
+.logo__title {
+    font-size: 50px;
+}
+
+.list--header {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+.list__item {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+
+.redirect {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+.redirect--facebook {
+    background-color: blue;
+    color: white;
+}
+
+.redirect--instagram {
+    background-color: orange;
+}
+
+.redirect--github {
+    background-color: slateblue;
+    color: white;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border: 3px dashed red;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    height: 100px;
+}
+
+.controls__grid-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.controls__button, .controls__field {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border-radius: 40px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+
+.footer {
+    text-align: center;
+}
