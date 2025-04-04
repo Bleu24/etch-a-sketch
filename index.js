@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputValue = undefined;
 
     //Functions
-    let createCanvas = (area) {
+    let createCanvas = (area) => {
         canvas.setAttribute("style", `width: ${area}`)
     }
 
