@@ -8,18 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const field = document.querySelector(".controls__field");
     const resetBtn = document.querySelector(".controls--reset-canvas");
     const colorBtn = document.querySelector(".controls--choose-color");
+    const randomizeBtn = document.querySelector(".controls--randomize");
     let pixel = document.createElement("div");
+    let pixels;
     
 
     //setting canvas 
-    canvas.setAttribute("style", "width: 800px; height: 800px; border: 3px dashed blue; margin-top: auto; margin-bottom: auto; display: flex; flex-wrap: wrap;");
+    canvas.setAttribute("style", "width: 800px; height: 800px; border: 3px solid black; margin-top: auto; margin-bottom: auto; display: flex; flex-wrap: wrap;");
 
     //variables for canvas pixels;
     let rows = 0;
     let columns = 0;
     let inputValue = undefined;
     let color = 'black';
-
+    
+    //randomize state
+    let randState = false;
     
 
     //Functions
@@ -34,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < numOfPixels; i++) {
             pixel = document.createElement("div");
             pixel.classList = 'pixel';
-            pixel.setAttribute("style", `flex-basis: calc(100% / ${input}); border: 1px solid black;`);
+            pixel.setAttribute("style", `flex-basis: calc(100% / ${input}); border: 1px solid black; flex-grow: 1;`);
             canvas.appendChild(pixel);
         }
     }
@@ -48,6 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
             alert("Empty Canvas");
         }
+    }
+
+    let randomizeColor = () => {
+        color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+        return color;
     }
     
 
@@ -105,9 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
         color = e.target.value;
     });
 
-    //Highlight pixel if alt key was pressed
+    randomizeBtn.addEventListener('click', () => {
+        if (!randState) {
+            randState = true;
+        } else {
+            randState = false;
+            color = randomizeColor();
+            colorBtn.value = color;
+        }
+    });
+
+    //Highlights/colors pixel if alt key was pressed
     canvas.addEventListener('mouseover', (e) => {
         if (e.target.classList.contains('pixel')) {
+            if (randState) {
+                if (e.altKey) {
+                    e.target.style.backgroundColor = randomizeColor();
+                } else {
+                    console.log("Press alt key to draw");
+                }
+            }
+
             if (e.altKey) {
                 e.target.style.backgroundColor = color;
             } else {
@@ -115,26 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
 
