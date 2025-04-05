@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 
     //DOM variables
-    const body = document.querySelector(".body");
     const canvas = document.querySelector(".grid");
     const gridBtn = document.querySelector(".controls--grid-button");
     const field = document.querySelector(".controls__field");
     const resetBtn = document.querySelector(".controls--reset-canvas");
     const colorBtn = document.querySelector(".controls--choose-color");
     const randomizeBtn = document.querySelector(".controls--randomize");
+    const instruction = document.querySelector(".instruction")
     let pixel = document.createElement("div");
-    let pixels;
+
     
 
     //setting canvas 
@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //randomize state
     let randState = false;
+
+    if (!canvas.hasChildNodes()) {
+        instruction.innerText = `Please set a grid`;
+    }
     
 
     //Functions
@@ -48,9 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             while (canvas.firstChild) {
                 canvas.removeChild(canvas.firstChild);
             }
-        }
-        else {
+            instruction.innerText = `Please set a grid`;
+        } else {
             alert("Empty Canvas");
+            
         }
     }
 
@@ -98,6 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`Creating a canvas size by: ${canvasArea} squares`);
 
             createPixels(inputGridSize, canvasArea);
+
+            if(canvas.hasChildNodes()) {
+                instruction.innerText = `Hold Alt to draw`;
+            }
                
         } catch (error) {
             console.error(error);
@@ -126,6 +135,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Highlights/colors pixel if alt key was pressed
     canvas.addEventListener('mouseover', (e) => {
+        if (e.target.classList.contains('pixel')) {
+            if (randState) {
+                if (e.altKey) {
+                    e.target.style.backgroundColor = randomizeColor();
+                } else {
+                    console.log("Press alt key to draw");
+                }
+            }
+
+            if (e.altKey) {
+                e.target.style.backgroundColor = color;
+            } else {
+                console.log("Press alt key to draw");
+            }
+        }
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
         if (e.target.classList.contains('pixel')) {
             if (randState) {
                 if (e.altKey) {
