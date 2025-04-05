@@ -160,13 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     console.log("Press alt key to draw");
                 }
-            }
-
-            if (e.altKey) {
-                e.target.style.backgroundColor = color;
-            } else {
-                console.log("Press alt key to draw");
-            }
+            }   
+            e.target.style.backgroundColor = color;  
         }
     });
 
